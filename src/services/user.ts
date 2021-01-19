@@ -39,7 +39,6 @@ export class UserApi {
       width: 512,
       height: 512
     }
-    console.log(rawUser.profileImage)
     return {
       id: rawData.sys.id ?? 1,
       slug: rawUser.slug,
@@ -62,7 +61,6 @@ export class UserApi {
       .then(entries => {
         if (entries && entries.items && entries.items.length > 0) {
           const users = entries.items.map(entry => this.convertUser(entry));
-          console.log(users)
           return users;
         }
         return [];

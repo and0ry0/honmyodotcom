@@ -5,7 +5,9 @@ import cn from 'classnames'
 import { CONST_SITE_NAME } from '../../libs/constants'
 import Container from 'components/container'
 
+
 export default function Layout({ isHome, preview, children }) {
+  const version = process.env.REACT_APP_VERSION
 
   const header =
     <div className="flex items-center text-center flex-col py-6 ">
@@ -24,6 +26,7 @@ export default function Layout({ isHome, preview, children }) {
           {children}
         </main>
         <Footer />
+        <div className="z-30 fixed top-0 right-0 p-3 text-xl font-bold text-gray-500 opacity-50">PRE-ALPHA v{version}</div>
       </div>
     </>
   )

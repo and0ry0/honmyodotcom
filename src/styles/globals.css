@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .twadded-grayscale {
+    filter: grayscale(100%);
+  }
+}
+
+:root {
+  --color-sasigume: #f7fcff;
+  --color-sasifont: #00062b;
+}
+
+@layer base {
+
+  html,
+  body {
+    padding         : 0;
+    margin          : 0;
+    font-family     : -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight     : 300;
+    color           : var(--color-sasifont);
+    background-color: #fff;
+  }
+
+  a {
+    color          : inherit;
+    text-decoration: none;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  ul {
+    @apply ml-4 list-disc;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+}

@@ -10,7 +10,6 @@ import { User, UserApi } from '../services'
 
 import ErrorPage from 'next/error'
 import Container from '../components/container'
-import Message from '../components/special/message'
 import MoreUsers from '../components/more-users'
 import UserPreview from '../components/user/user-preview'
 
@@ -39,11 +38,9 @@ export default function Home({
         <title>{CONST_SITE_NAME}</title>
       </Head>
 
-      <Message />
-
       <Container>
 
-        <h2 className="text-4xl font-md:text-6xl mb-6">ユーザー一覧</h2>
+        <h2 className="text-4xl font-md:text-6xl mt-12 mb-6">メンバー</h2>
         {router.isFallback ? (
           <span>Loading…</span>
         ) : (

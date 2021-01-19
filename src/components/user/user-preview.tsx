@@ -11,9 +11,9 @@ type UserPreviewProps = {
 export default function UserPreview({ user, first }: UserPreviewProps): ReactElement {
   return (
     <Link href={user.slug}>
-      <a id={user.slug} className="block rounded-xl shadow-xl my-12 pb-6 overflow-hidden">
+      <div id={user.slug} className="cursor-pointer rounded-xl shadow-xl my-12 pb-6 overflow-hidden">
         <UserHeader isList={true} user={user} />
-      </a>
+      </div>
     </Link>
   )
 }

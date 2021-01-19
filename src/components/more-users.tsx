@@ -11,9 +11,9 @@ export default function MoreUsers({ users, }
   return (
     <section className="mt-20 ">
       <h2 className="mb-2 text-4xl md:text-4xl">
-      Other users
+      サブメンバー
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-14 mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-14 mb-4">
         {users.map((user) => (
           <UserPreview
             key={user.slug}

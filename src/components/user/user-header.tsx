@@ -25,7 +25,7 @@ export default function UserHeader({ isList, user }: UserHeaderProps): ReactElem
           {user.hasProfileImage ? 
           <img
             src={user.profileImage.imageUrl}
-            className="flex-none twadded-grayscale w-36 h-36 rounded-full"
+            className="flex-none w-36 h-36 rounded-full"
             alt={user.name}
           /> : 'No pic'
         }

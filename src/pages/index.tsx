@@ -1,5 +1,8 @@
-import { CONST_CREATOR, CONST_SITE_NAME } from '../libs/constants'
-import { ReactElement } from 'react'
+import { CONST_SITE_NAME } from '../libs/constants'
+import { ReactElement, useRef } from 'react'
+
+import { Canvas } from 'react-three-fiber'
+import { Boxes } from '../three/box'
 
 import Layout from '../components/layout'
 import Head from 'next/head'
@@ -38,10 +41,20 @@ export default function Home({
         <title>{CONST_SITE_NAME}</title>
       </Head>
 
+      <Container><p className="text-6xl font-bold my-10">本棚は、要塞だ。</p></Container>
+
+      <div className="w-screen h-screen">
+        <Canvas camera={{
+          position: [0, 5, 3],
+          near: 0.1, far: 20000
+        }}>
+          <ambientLight />
+          <pointLight position={[20, 10, 20]} />
+          <Boxes position={[0,0,0]} />
+        </Canvas>
+      </div>
+
       <Container>
-        <p className="mb-6">
-          ブックログみたいなんじゃなくて、「棚」だけ好き勝手作れるサービスが作りたいのよ。。。
-        </p>
 
         <h2 className="text-4xl font-md:text-6xl mt-12 mb-6">開発メンバー</h2>
         {router.isFallback ? (

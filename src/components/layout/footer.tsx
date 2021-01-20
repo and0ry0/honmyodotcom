@@ -15,13 +15,6 @@ export default function Footer() {
             </a>
           </div>
           <div><a
-            href={CONST_YOUTUBE_URL} target="_blank"
-            className="inline hover:underline"
-          >
-            <FontAwesomeIcon className="w-4 mb-1 mr-1 inline" icon={['fab', 'youtube']} />YouTube
-            </a>
-          </div>
-          <div><a
             href={CONST_BLOG_URL} target="_blank"
             className="inline hover:underline"
           >

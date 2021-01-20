@@ -12,7 +12,7 @@ export default function Layout({ isHome, preview, children }) {
     <>
       <Meta />
       <div id="#" className="overflow-hidden max-w-screen overflow-y-scroll min-h-screen flex flex-col">
-        <div className="block w-screen bg-red-400 text-white py-16">
+        <div className="block w-screen bg-red-400 text-white pt-6">
           <Container>
             <div className="font-bold mt-2 text-2xl leading-loose">
               <div className="text-3xl">{CONST_MESSAGE}</div>

@@ -39,8 +39,11 @@ export default function Home({
       </Head>
 
       <Container>
+        <p className="mb-6">
+          ブックログみたいなんじゃなくて、「棚」だけ好き勝手作れるサービスが作りたいのよ。。。
+        </p>
 
-        <h2 className="text-4xl font-md:text-6xl mt-12 mb-6">メンバー</h2>
+        <h2 className="text-4xl font-md:text-6xl mt-12 mb-6">開発メンバー</h2>
         {router.isFallback ? (
           <span>Loading…</span>
         ) : (

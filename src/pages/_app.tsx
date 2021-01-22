@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 
 import '../styles/globals.css'
 
-import addIcon from '../options/icon'
+import addIcon from '../libs/icon'
 
 function MyApp({ Component, pageProps }: AppProps) {
   addIcon()

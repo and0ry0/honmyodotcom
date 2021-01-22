@@ -1,80 +1,54 @@
-import { CONST_SITE_NAME } from '../libs/constants'
-import { ReactElement, useRef } from 'react'
+import { CONST_SITE_NAME } from '../options/constants'
 
 import { Canvas } from 'react-three-fiber'
-import { Boxes } from '../three/box'
-
+import { Desk } from '../three/desk'
 import Layout from '../components/layout'
 import Head from 'next/head'
 
-import { GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
-import { User, UserApi } from '../services'
-
-import ErrorPage from 'next/error'
 import Container from '../components/container'
-import MoreUsers from '../components/more-users'
-import UserPreview from '../components/user/user-preview'
+
+import { User, UserApi } from '@services/index.ts'
+import { GetStaticProps } from 'next'
 
 type HomeProps = {
-  preview: boolean,
-  isHome: boolean,
   allUsers: User[]
 }
 
-export default function Home({
-  preview = false,
-  isHome = false,
-  allUsers,
-}: HomeProps): ReactElement {
-  const heroUser = allUsers[0]
-  const moreUsers = allUsers.slice(1)
 
-  const router = useRouter()
+export default function Home({ allUsers }: HomeProps) {
+  const d = 30.25
 
-  if (!router.isFallback && !allUsers) {
-    return <ErrorPage statusCode={404} />
-  }
   return (
-    <Layout isHome={true} preview={false}>
+    <Layout allUsers={allUsers}>
       <Head>
         <title>{CONST_SITE_NAME}</title>
       </Head>
 
-      <Container><p className="text-6xl font-bold my-10">本棚は、要塞だ。</p></Container>
+    
+      <Canvas className="w-full" colorManagement shadowMap camera={{ position: [0, 3, 5], fov: 60 }}>
+        <fog attach="fog" args={["white", 0, 40]} />
+        <ambientLight intensity={0.4} />
+        <directionalLight
+          castShadow
+          position={[2.5, 8, 5]}
+          intensity={1.5}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          shadow-camera-far={50}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        />
+        <pointLight position={[0, -10, 0]} intensity={1.5} />
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]} receiveShadow>
+          <planeBufferGeometry attach="geometry" args={[100, 100]} />
+          <shadowMaterial attach="material" transparent opacity={0.4} />
+        </mesh>
 
-      <div className="w-screen h-screen">
-        <Canvas camera={{
-          position: [0, 5, 3],
-          near: 0.1, far: 20000
-        }}>
-          <ambientLight />
-          <pointLight position={[20, 10, 20]} />
-          <Boxes position={[0,0,0]} />
-        </Canvas>
-      </div>
-
-      <Container>
-
-        <h2 className="text-4xl font-md:text-6xl mt-12 mb-6">開発メンバー</h2>
-        {router.isFallback ? (
-          <span>Loading…</span>
-        ) : (
-            <>
-              <div className="">
-                {heroUser && (
-                  <UserPreview
-                    user={heroUser}
-                    first={true}
-                  />
-                )}
-              </div>
-              {moreUsers.length > 0 && <MoreUsers users={moreUsers} />}
-            </>)
-        }
-      </Container>
-
-    </Layout>
+        <Desk position={[0, 1.5, 0]} />
+      </Canvas>
+    </Layout >
   )
 }
 

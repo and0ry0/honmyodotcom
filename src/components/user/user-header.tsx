@@ -18,10 +18,7 @@ export default function UserHeader({ isList, user }: UserHeaderProps): ReactElem
         <CoverImage fixHeight={isList} user={user} />
       </div>
       <div className="flex flex-col text-lg text-left px-4">
-        <div className={cn(`flex justify-center items-center w-40 h-40 z-10 mr-6 bg-white rounded-full p-2`,{
-          "-mt-10": isList,
-          "-mt-20": !isList
-        })}>
+        <div className={cn(`flex justify-center items-center w-40 h-40 z-10 mr-6 bg-white rounded-full p-2 -mt-20`)}>
           {user.hasProfileImage ? 
           <img
             src={user.profileImage.imageUrl}

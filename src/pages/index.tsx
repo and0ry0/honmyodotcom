@@ -24,7 +24,8 @@ export default function Home({ allUsers }: HomeProps) {
         <title>{CONST_SITE_NAME}</title>
       </Head>
 
-      <Canvas colorManagement shadowMap camera={{ position: [0, 2, 5], fov: 60 }}>
+    
+      <Canvas className="w-full" colorManagement shadowMap camera={{ position: [0, 3, 5], fov: 60 }}>
         <fog attach="fog" args={["white", 0, 40]} />
         <ambientLight intensity={0.4} />
         <directionalLight
@@ -39,14 +40,13 @@ export default function Home({ allUsers }: HomeProps) {
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
-        <pointLight position={[-10, 0, -20]} color="red" intensity={2.5} />
         <pointLight position={[0, -10, 0]} intensity={1.5} />
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]} receiveShadow>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]} receiveShadow>
           <planeBufferGeometry attach="geometry" args={[100, 100]} />
           <shadowMaterial attach="material" transparent opacity={0.4} />
         </mesh>
 
-        <Desk position={[0, 0, 0]} />
+        <Desk position={[0, 1.5, 0]} />
       </Canvas>
     </Layout >
   )

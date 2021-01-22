@@ -37,11 +37,11 @@ export default function Layout({ children, allUsers }) {
         <div ref={node} className="z-10 fixed top-20 left-0">
           <Menu allUsers={allUsers} open={open} />
         </div>
-        <main className="w-screen h-screen">
+        <main className="absolute top-0 left-0 w-screen h-screen">
           {children}
         </main>
         <Footer />
-        <div className="z-30 fixed top-0 right-0 p-3 text-xl font-bold text-gray-500 opacity-50">PRE-ALPHA v{packageJson.version}</div>
+        <div className="z-30 fixed bottom-0 right-0 p-3 text-xl font-bold text-gray-500 opacity-50">PRE-ALPHA v{packageJson.version}</div>
       </div>
     </>
   )

@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import Head from 'next/head'
 
 import Container from '../components/container'
+import UserList from '@components/user-list'
 
 import { User, UserApi } from '@services/index.ts'
 import { GetStaticProps } from 'next'
@@ -24,7 +25,7 @@ export default function Home({ allUsers }: HomeProps) {
         <title>{CONST_SITE_NAME}</title>
       </Head>
 
-    
+
       <Canvas className="w-full" colorManagement shadowMap camera={{ position: [0, 3, 5], fov: 60 }}>
         <fog attach="fog" args={["white", 0, 40]} />
         <ambientLight intensity={0.4} />
@@ -48,6 +49,9 @@ export default function Home({ allUsers }: HomeProps) {
 
         <Desk position={[0, 1.5, 0]} />
       </Canvas>
+      <Container>
+        <UserList users={allUsers} />
+      </Container>
     </Layout >
   )
 }

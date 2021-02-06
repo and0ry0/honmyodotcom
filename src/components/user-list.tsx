@@ -3,13 +3,13 @@ import UserPreview from './user/user-preview'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 
-export default function UserList({allUsers}) {
-  const heroUser = allUsers[0]
-  const moreUsers = allUsers.slice(1)
+export default function UserList({users}) {
+  const heroUser = users[0]
+  const moreUsers = users.slice(1)
 
   const router = useRouter()
 
-  if (!router.isFallback && !allUsers) {
+  if (!router.isFallback && !users) {
     return <ErrorPage statusCode={404} />
   }
 

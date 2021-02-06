@@ -1,10 +1,7 @@
 
 import packageJson from '../../../package.json'
 
-import React, { useState, useRef } from 'react';
-import { useOnClickOutside } from './menu';
-
-import { Burger, Menu } from './menu'
+import React from 'react';
 import Footer from './footer'
 import Meta from './meta'
 
@@ -12,17 +9,11 @@ import { CONST_SITE_NAME, CONST_MESSAGE } from '@options/constants'
 
 export default function Layout({ children, allUsers }) {
 
-  const [open, setOpen] = useState<boolean>();
-
-  const node = useRef();
-  useOnClickOutside(node, () => setOpen(false));
-
   return (
     <>
       <Meta />
-      <div id="#" className="overflow-hidden w-screen h-screen">
+      <div id="#" className="overflow-hidden flex flex-col py-10">
         <nav className="z-20 fixed top-0 left-0 flex">
-          <Burger open={open} setOpen={setOpen} />
           <div className="p-3 text-red-400">
             <div className="font-bold text-lg leading-loose">
               <div className="text-xl">
@@ -33,15 +24,11 @@ export default function Layout({ children, allUsers }) {
             </div>
           </div>
         </nav>
-        {/* メニュー以外クリックで閉じる */}
-        <div ref={node} className="z-10 fixed top-20 left-0">
-          <Menu allUsers={allUsers} open={open} />
-        </div>
-        <main className="absolute top-0 left-0 w-screen h-screen">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
-        <div className="z-30 fixed bottom-0 right-0 p-3 text-xl font-bold text-gray-500 opacity-50">PRE-ALPHA v{packageJson.version}</div>
+        <div className="fixed top-0 right-0 z-30 p-3 text-xl font-bold text-gray-500 opacity-50">PRE-ALPHA v{packageJson.version}</div>
       </div>
     </>
   )
